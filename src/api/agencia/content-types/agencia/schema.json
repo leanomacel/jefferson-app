@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "agencias",
+  "info": {
+    "singularName": "agencia",
+    "pluralName": "agencias",
+    "displayName": "Agencia"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "agencia": {
+      "type": "string"
+    },
+    "projetos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::projeto.projeto",
+      "mappedBy": "agencia"
+    }
+  }
+}

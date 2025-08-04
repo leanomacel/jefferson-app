@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "configs",
+  "info": {
+    "singularName": "config",
+    "pluralName": "configs",
+    "displayName": "config"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome_sistema": {
+      "type": "string"
+    },
+    "table_colors": {
+      "type": "json"
+    }
+  }
+}

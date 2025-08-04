@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "municipios",
+  "info": {
+    "singularName": "municipio",
+    "pluralName": "municipios",
+    "displayName": "Municipio"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "projetos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::projeto.projeto",
+      "mappedBy": "municipio"
+    }
+  }
+}

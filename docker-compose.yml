@@ -1,0 +1,53 @@
+services:
+  # Serviço do Strapi (sem alterações)
+  strapi:
+    build: .
+    image: strapi-app
+    container_name: strapi
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=postgres://strapi_user:strapi_password@postgres:5432/strapi_db
+      - HOST=0.0.0.0
+      - PORT=1337
+      - JWT_SECRET=seu_jwt_secret_aqui # Troque por uma string aleatória e segura
+      - ADMIN_JWT_SECRET=seu_admin_jwt_secret_aqui # Troque por outra string
+    volumes:
+      - ./:/opt/app
+      - /opt/app/node_modules
+    ports:
+      - '1337:1337'
+    depends_on:
+      - postgres
+
+  # Serviço do Banco de Dados PostgreSQL (sem alterações)
+  postgres:
+    image: postgres:14-alpine
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=strapi_db
+      - POSTGRES_USER=strapi_user
+      - POSTGRES_PASSWORD=strapi_password
+    volumes:
+      - strapi-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  # --- NOVO SERVIÇO: Appsmith ---
+  appsmith:
+    image: appsmith/appsmith-ce # Imagem oficial do Appsmith Community Edition
+    container_name: appsmith
+    restart: unless-stopped
+    ports:
+      - '8080:80' # Mapeia a porta 8080 do host para a porta 80 do container
+    volumes:
+      - appsmith-data:/appsmith-stacks # Volume para persistir os dados do Appsmith
+    environment:
+      # IMPORTANTE: Altere estas senhas para valores seguros e aleatórios!
+      - APPSMITH_ENCRYPTION_PASSWORD=sua_senha_de_criptografia_segura
+      - APPSMITH_ENCRYPTION_SALT=seu_salt_de_criptografia_seguro
+
+volumes:
+  strapi-data:
+  # --- NOVO VOLUME: para os dados do Appsmith ---
+  appsmith-data:

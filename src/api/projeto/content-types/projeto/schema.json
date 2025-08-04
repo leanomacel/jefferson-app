@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projetos",
+  "info": {
+    "singularName": "projeto",
+    "pluralName": "projetos",
+    "displayName": "Projeto"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "proponente": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::proponente.proponente",
+      "inversedBy": "projetos"
+    },
+    "municipio": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::municipio.municipio",
+      "inversedBy": "projetos"
+    },
+    "local": {
+      "type": "string"
+    },
+    "situacao": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::situacao.situacao",
+      "inversedBy": "projetos"
+    },
+    "observacao": {
+      "type": "string"
+    },
+    "agencia": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::agencia.agencia",
+      "inversedBy": "projetos"
+    },
+    "gerente": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::gerente.gerente",
+      "inversedBy": "projetos"
+    },
+    "valor": {
+      "type": "decimal"
+    },
+    "pagamento_1_parcela": {
+      "type": "date"
+    },
+    "ativo": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "descricao": {
+      "type": "text"
+    }
+  }
+}

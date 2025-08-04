@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "situacoes",
+  "info": {
+    "singularName": "situacao",
+    "pluralName": "situacoes",
+    "displayName": "Situação"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "projetos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::projeto.projeto",
+      "mappedBy": "situacao"
+    }
+  }
+}
